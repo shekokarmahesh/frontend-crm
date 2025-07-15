@@ -74,5 +74,9 @@ export default defineConfig({
       }
     }
   },
-  preview: { port: PORT, host: true },
+  preview: {
+    port: PORT,
+    host: true,
+    allowedHosts: ['ahoum-crm.onrender.com'],
+  },
 });
