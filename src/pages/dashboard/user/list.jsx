@@ -1,32 +1,34 @@
-import { useState, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useState, useCallback } from 'react';
 import { varAlpha } from 'minimal-shared/utils';
 import { useBoolean, useSetState } from 'minimal-shared/hooks';
-import { alpha } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
+import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
 import Button from '@mui/material/Button';
+import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
+
 import { _userList, USER_STATUS_OPTIONS } from 'src/_mock';
-import { useSettingsContext } from 'src/components/settings';
+
 import { Label } from 'src/components/label';
+import { toast } from 'src/components/snackbar';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
+import { useSettingsContext } from 'src/components/settings';
 import { ConfirmDialog } from 'src/components/custom-dialog';
-import { toast } from 'src/components/snackbar';
 import {
   useTable,
   emptyRows,
@@ -37,10 +39,11 @@ import {
   TableSelectedAction,
   TablePaginationCustom,
 } from 'src/components/table';
+
 import { UserCard } from 'src/sections/user/user-card';
+import { UserFilters } from 'src/sections/user/user-filters';
 import { UserTableRow } from 'src/sections/user/user-table-row';
 import { UserTableToolbar } from 'src/sections/user/user-table-toolbar';
-import { UserFilters } from 'src/sections/user/user-filters';
 
 // ----------------------------------------------------------------------
 
@@ -89,12 +92,6 @@ export default function UserListPage() {
 
   const canReset = !!currentFilters.name || currentFilters.role.length > 0 || currentFilters.status !== 'all';
   const notFound = (!dataFiltered.length && canReset) || !dataFiltered.length;
-
-  const handleChangeView = (event, newView) => {
-    if (newView !== null) {
-      setView(newView);
-    }
-  };
 
   const handleDeleteRow = useCallback(
     (id) => {

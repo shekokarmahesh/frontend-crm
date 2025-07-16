@@ -5,8 +5,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
-import { Iconify } from 'src/components/iconify';
 import { paths } from 'src/routes/paths';
+
+import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 

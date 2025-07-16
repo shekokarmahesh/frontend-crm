@@ -1,35 +1,39 @@
 import { useState, useEffect } from 'react';
 
-import Alert from '@mui/material/Alert';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import Divider from '@mui/material/Divider';
+import { alpha } from '@mui/material/styles';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Select from '@mui/material/Select';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { alpha } from '@mui/material/styles';
+import CardContent from '@mui/material/CardContent';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import FormHelperText from '@mui/material/FormHelperText';
 
 import { paths } from 'src/routes/paths';
-import { JWT_STORAGE_KEY } from 'src/auth/context/jwt/constant';
+
+import { saveBioAbout, saveBasicInfo, storeAuthToken, debugTokenStatus, saveVisualProfile, getTokenForEndpoint, saveProfessionalDetails, saveExperienceCertifications } from 'src/services/api';
+
 import { Iconify } from 'src/components/iconify';
-import { debugTokenStatus, getTokenForEndpoint, saveBasicInfo, saveBioAbout, saveExperienceCertifications, saveProfessionalDetails, saveVisualProfile, storeAuthToken } from 'src/services/api';
-import { AiSuggestionButton } from './ai-suggestion-button';
-import { BannerGallery } from './banner-gallery';
-import { EnhancedProgressIndicator } from './enhanced-progress-indicator';
-import { ProfilePreview } from './profile-preview';
+
+import { JWT_STORAGE_KEY } from 'src/auth/context/jwt/constant';
+
 import { UploadImage } from './upload-image';
+import { BannerGallery } from './banner-gallery';
+import { ProfilePreview } from './profile-preview';
+import { AiSuggestionButton } from './ai-suggestion-button';
+import { EnhancedProgressIndicator } from './enhanced-progress-indicator';
 
 // ----------------------------------------------------------------------
 
@@ -406,42 +410,6 @@ export function OnboardingFlow() {
       // Redirect to dashboard
       window.location.href = paths.dashboard.root;
       
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSkip = async () => {
-    try {
-      setIsLoading(true);
-      
-      // Still need to save current step data even if skipping
-      switch (activeStep) {
-        case 0: // Basic Information - cannot skip
-          alert('Basic information is required and cannot be skipped.');
-          return;
-        case 1: // Visual Profile
-          await saveVisualProfile(formData);
-          break;
-        case 2: // Professional Details
-          await saveProfessionalDetails(formData);
-          break;
-        case 3: // Bio & About
-          await saveBioAbout(formData);
-          break;
-        case 4: // Experience (Final Step)
-          await handleComplete();
-          return;
-        default:
-          break;
-      }
-      
-      // Move to next step
-      setActiveStep(prevStep => prevStep + 1);
-      
-    } catch (error) {
-      console.error('Error skipping step:', error);
-      alert(error.error || error.message || 'Failed to skip step. Please try again.');
     } finally {
       setIsLoading(false);
     }

@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 
 import {
-  Alert,
   Box,
-  Button,
   Card,
-  CircularProgress,
-  Container,
+  Alert,
   Stack,
+  Button,
+  Container,
   Typography,
+  CircularProgress,
 } from '@mui/material';
 
-import { Iconify } from 'src/components/iconify';
 import { getCourse, createCourse, updateCourse } from 'src/services/api';
+
+import { Iconify } from 'src/components/iconify';
 
 import CourseForm from './course-form';
 
@@ -31,26 +32,25 @@ export default function CourseCreateView() {
 
   useEffect(() => {
     if (isEdit) {
+      const fetchCourse = async () => {
+        try {
+          setLoading(true);
+          setError(null);
+          const response = await getCourse(id);
+          if (response.success) {
+            setCourse(response.data);
+          } else {
+            setError(response.message || 'Failed to fetch course');
+          }
+        } catch (err) {
+          setError(err.message || 'Failed to fetch course');
+        } finally {
+          setLoading(false);
+        }
+      };
       fetchCourse();
     }
   }, [id, isEdit]);
-
-  const fetchCourse = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await getCourse(id);
-      if (response.success) {
-        setCourse(response.data);
-      } else {
-        setError(response.message || 'Failed to fetch course');
-      }
-    } catch (err) {
-      setError(err.message || 'Failed to fetch course');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleSubmit = async (formData) => {
     try {

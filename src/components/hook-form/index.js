@@ -8,6 +8,8 @@ export * from './rhf-switch';
 
 export * from './rhf-slider';
 
+export * from './rhf-upload';
+
 export * from './rhf-checkbox';
 
 export * from './schema-helper';
@@ -23,5 +25,3 @@ export * from './rhf-radio-group';
 export * from './rhf-phone-input';
 
 export * from './rhf-country-select';
-
-export * from './rhf-upload';

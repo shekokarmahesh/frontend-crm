@@ -2,17 +2,18 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
+import Tab from '@mui/material/Tab';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
+import TabList from '@mui/lab/TabList';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import Avatar from '@mui/material/Avatar';
+import TabContext from '@mui/lab/TabContext';
+import Typography from '@mui/material/Typography';
+
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------

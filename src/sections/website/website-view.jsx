@@ -1,40 +1,40 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import Alert from '@mui/material/Alert';
-import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Tab from '@mui/material/Tab';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
-import CircularProgress from '@mui/material/CircularProgress';
-import Container from '@mui/material/Container';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import TabList from '@mui/lab/TabList';
+import Alert from '@mui/material/Alert';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import Tab from '@mui/material/Tab';
-import TextField from '@mui/material/TextField';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-
-import LoadingButton from '@mui/lab/LoadingButton';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import AppBar from '@mui/material/AppBar';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import Toolbar from '@mui/material/Toolbar';
+import TabContext from '@mui/lab/TabContext';
+import MenuItem from '@mui/material/MenuItem';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import LoadingButton from '@mui/lab/LoadingButton';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import { publishWebsite, getWebsiteStatus, getPublicWebsiteData, checkSubdomainAvailability as checkSubdomainAPI } from 'src/services/api';
 
 import { Iconify } from 'src/components/iconify';
 
 import { useAuthContext } from 'src/auth/hooks';
-
-import { checkSubdomainAvailability as checkSubdomainAPI, getPublicWebsiteData, getWebsiteStatus, publishWebsite } from 'src/services/api';
 
 // ----------------------------------------------------------------------
 
@@ -301,8 +301,8 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
         // Handle API errors
         setPublishError(data.message || data.error || 'Failed to publish website');
       }
-    } catch (publishError) {
-      console.error('Error publishing website:', publishError);
+    } catch (err) {
+      console.error('Error publishing website:', err);
       setPublishError('Failed to publish website. Please try again.');
     } finally {
       setPublishLoading(false);

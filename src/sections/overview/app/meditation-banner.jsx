@@ -4,10 +4,9 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
-
+import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 // Icons
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 export function MeditationBanner() {

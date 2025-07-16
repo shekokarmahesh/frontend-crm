@@ -9,8 +9,8 @@ import { CONFIG } from 'src/global-config';
 
 import { Footer } from './footer';
 import { NavDesktop } from './nav/nav-desktop';
-import { NavMobile } from './nav/mobile/nav-mobile';
 import { MainSection } from '../core/main-section';
+import { NavMobile } from './nav/mobile/nav-mobile';
 import { MenuButton } from '../components/menu-button';
 
 // ----------------------------------------------------------------------

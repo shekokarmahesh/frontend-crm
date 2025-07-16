@@ -24,6 +24,7 @@ import {
   _postTitles,
   _firstNames,
   _eventNames,
+  _categories,
   _courseNames,
   _fullAddress,
   _companyNames,
@@ -31,7 +32,6 @@ import {
   _descriptions,
   _phoneNumbers,
   _countryNames,
-  _categories,
 } from './assets';
 
 // ----------------------------------------------------------------------

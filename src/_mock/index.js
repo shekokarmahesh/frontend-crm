@@ -8,6 +8,8 @@ export * from './_tour';
 
 export * from './_blog';
 
+export * from './_chat';
+
 export * from './assets';
 
 export * from './_files';
@@ -23,5 +25,3 @@ export * from './_product';
 export * from './_overview';
 
 export * from './_calendar';
-
-export * from './_chat';

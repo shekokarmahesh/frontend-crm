@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
           const res = await axios.get(endpoints.auth.me);
           const { user } = res.data;
           setState({ user: { ...user, accessToken }, loading: false });
-        } catch (apiError) {
+        } catch {
           // If API call fails, check for demo user
           const demoUser = sessionStorage.getItem('demo_user');
           if (demoUser) {

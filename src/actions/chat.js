@@ -19,7 +19,7 @@ const swrOptions = {
 
 // Mock data fetcher for local development
 const mockFetcher = (url) => {
-  const [endpoint, config] = Array.isArray(url) ? url : [url, {}];
+  const [, config] = Array.isArray(url) ? url : [url, {}];
   const params = config?.params || {};
   
   if (params.endpoint === 'contacts') {

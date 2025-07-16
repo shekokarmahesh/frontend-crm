@@ -83,7 +83,7 @@ export const verifyOTP = async (phoneNumber, otp) => {
   try {
     const response = await api.post('/auth/verify-otp', {
       phone_number: phoneNumber,
-      otp: otp,
+      otp,
     });
     return response.data;
   } catch (error) {
@@ -228,7 +228,7 @@ export const saveExperienceCertifications = async (data) => {
 
     const response = await api.post('/auth/onboarding/step5-experience-certifications', {
       work_experiences: workExperiences,
-      certifications: certifications,
+      certifications,
     });
 
     // Handle enhanced onboarding completion response
@@ -286,9 +286,7 @@ export const clearTokens = () => {
  * Get current token (auth or onboarding)
  * @returns {string|null} Current token
  */
-export const getCurrentToken = () => {
-  return localStorage.getItem('jwt_access_token') || sessionStorage.getItem('onboarding_token');
-};
+export const getCurrentToken = () => localStorage.getItem('jwt_access_token') || sessionStorage.getItem('onboarding_token');
 
 /**
  * Debug function to check token status
@@ -331,17 +329,13 @@ export const getTokenForEndpoint = (endpoint) => {
  * Check if user has onboarding token
  * @returns {boolean} Has onboarding token
  */
-export const hasOnboardingToken = () => {
-  return !!sessionStorage.getItem('onboarding_token');
-};
+export const hasOnboardingToken = () => !!sessionStorage.getItem('onboarding_token');
 
 /**
  * Check if user has auth token
  * @returns {boolean} Has auth token
  */
-export const hasAuthToken = () => {
-  return !!localStorage.getItem('jwt_access_token');
-};
+export const hasAuthToken = () => !!localStorage.getItem('jwt_access_token');
 
 // =====================================================
 // WEBSITE PUBLISHING ENDPOINTS
@@ -387,7 +381,7 @@ export const checkSubdomainAvailability = async (subdomain) => {
 export const publishWebsite = async (subdomain) => {
   try {
     const response = await api.post('/facilitator/publish-website', {
-      subdomain: subdomain,
+      subdomain,
     });
     return response.data;
   } catch (error) {
@@ -523,7 +517,7 @@ export const sendCourseWhatsApp = async (courseId, data) => {
 export const sendCourseToAllStudents = async (courseId, filters = {}) => {
   try {
     const response = await api.post(`/courses/${courseId}/send-to-all-students`, {
-      filters: filters,
+      filters,
     });
     return response.data;
   } catch (error) {

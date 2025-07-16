@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
-import { CONFIG } from 'src/global-config';
+
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------

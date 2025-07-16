@@ -4,20 +4,19 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
-import { sendOTP, storeAuthToken, storeOnboardingToken, verifyOTP } from 'src/services/api';
+import { sendOTP, verifyOTP, storeAuthToken, storeOnboardingToken } from 'src/services/api';
 
 import { Iconify } from 'src/components/iconify';
-
 import { Form, Field } from 'src/components/hook-form';
 
 import { FormHead } from '../../components/form-head';
