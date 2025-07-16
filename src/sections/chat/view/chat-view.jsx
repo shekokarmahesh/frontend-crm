@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback, startTransition } from 'react';
 
-import Typography from '@mui/material/Typography';
-
 import { paths } from 'src/routes/paths';
 import { useRouter, useSearchParams } from 'src/routes/hooks';
 

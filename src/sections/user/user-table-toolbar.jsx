@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
+
 import { Stack, TextField, InputAdornment } from '@mui/material';
+
 import { Iconify } from 'src/components/iconify';
 
 export function UserTableToolbar({ filterName, onFilterName }) {

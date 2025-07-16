@@ -11,9 +11,9 @@ import { ProgressBar } from 'src/components/progress-bar';
 import { MotionLazy } from 'src/components/animate/motion-lazy';
 import { Snackbar } from 'src/components/snackbar';
 import { SettingsDrawer, defaultSettings, SettingsProvider } from 'src/components/settings';
+import { SubdomainHandler } from 'src/components/subdomain-handler';
 
 import { AuthProvider } from 'src/auth/context/jwt';
-import { SubdomainHandler } from 'src/components/subdomain-handler';
 
 // ----------------------------------------------------------------------
 

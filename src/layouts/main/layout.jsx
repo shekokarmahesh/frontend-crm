@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography';
 import { CONFIG } from 'src/global-config';
 
 import { Footer } from './footer';
-import { NavMobile } from './nav/mobile/nav-mobile';
 import { NavDesktop } from './nav/nav-desktop';
-import { MenuButton } from '../components/menu-button';
+import { NavMobile } from './nav/mobile/nav-mobile';
 import { MainSection } from '../core/main-section';
+import { MenuButton } from '../components/menu-button';
 
 // ----------------------------------------------------------------------
 

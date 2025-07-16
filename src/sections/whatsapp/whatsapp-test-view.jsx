@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
+
 import {
-  Box,
-  Card,
-  Container,
-  Typography,
-  TextField,
-  Button,
-  Stack,
   Alert,
-  CircularProgress,
+  Box,
+  Button,
+  Card,
   Chip,
-  Grid,
+  CircularProgress,
+  Container,
   Divider,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
@@ -271,7 +272,7 @@ export default function WhatsAppTestView() {
             • Test messages help verify that your WhatsApp API is working correctly
           </Typography>
           <Typography variant="body2">
-            • If the connection status shows "disconnected", check your API configuration
+            • If the connection status shows &quot;disconnected&quot;, check your API configuration
           </Typography>
         </Stack>
       </Card>

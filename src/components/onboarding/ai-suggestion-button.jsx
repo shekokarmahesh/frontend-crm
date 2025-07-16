@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+
 import Tooltip from '@mui/material/Tooltip';
-import { Iconify } from 'src/components/iconify';
+import IconButton from '@mui/material/IconButton';
 import { alpha } from '@mui/material/styles';
+
+import { Iconify } from 'src/components/iconify';
 
 export function AiSuggestionButton({ onSuggest, field }) {
   const [isLoading, setIsLoading] = useState(false);

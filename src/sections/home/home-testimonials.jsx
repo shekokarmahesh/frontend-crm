@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
+import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Rating from '@mui/material/Rating';
 
 import { Iconify } from 'src/components/iconify';
@@ -126,7 +126,7 @@ export function HomeTestimonials({ sx, ...other }) {
                     flexGrow: 1,
                   }}
                 >
-                  "{testimonial.review}"
+                  &ldquo;{testimonial.review}&rdquo;
                 </Typography>
 
                 {/* Author Info */}

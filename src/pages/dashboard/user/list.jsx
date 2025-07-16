@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useBoolean, useSetState } from 'minimal-shared/hooks';
 import { varAlpha } from 'minimal-shared/utils';
+import { useBoolean, useSetState } from 'minimal-shared/hooks';
 import { alpha } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -20,14 +20,12 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
+import { _userList, USER_STATUS_OPTIONS } from 'src/_mock';
 import { useSettingsContext } from 'src/components/settings';
-import { _roles, _userList, USER_STATUS_OPTIONS } from 'src/_mock';
-
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 import { ConfirmDialog } from 'src/components/custom-dialog';
-import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 import { toast } from 'src/components/snackbar';
 import {
   useTable,
@@ -39,11 +37,9 @@ import {
   TableSelectedAction,
   TablePaginationCustom,
 } from 'src/components/table';
-
 import { UserCard } from 'src/sections/user/user-card';
 import { UserTableRow } from 'src/sections/user/user-table-row';
 import { UserTableToolbar } from 'src/sections/user/user-table-toolbar';
-import ViewToggle from 'src/sections/user/view-toggle';
 import { UserFilters } from 'src/sections/user/user-filters';
 
 // ----------------------------------------------------------------------

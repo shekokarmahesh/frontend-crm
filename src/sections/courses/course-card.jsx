@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
+
 import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
   Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
   Chip,
   IconButton,
   Stack,
+  Typography,
 } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
@@ -17,13 +18,11 @@ import { Iconify } from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function CourseCard({ course, onEdit, onDelete, onSendWhatsApp }) {
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
-  };
+  const formatDate = (dateString) => new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>

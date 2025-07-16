@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
+import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
+import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -43,29 +40,7 @@ const GALLERY_IMAGES = [
   'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&h=150&fit=crop',
 ];
 
-const experienceData = [
-  {
-    title: 'Senior Yoga Therapist',
-    company: 'Wellness Center Delhi',
-    duration: '6 years (2018-2024)',
-    description: 'Specialized in therapeutic yoga for chronic pain and stress management',
-    image: 'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=300&h=200&fit=crop'
-  },
-  {
-    title: 'Freelance Instructor',
-    company: 'Various Studios Mumbai',
-    duration: '8 years (2016-2024)',
-    description: 'Conducted workshops and retreats across Mumbai and Goa',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=300&h=200&fit=crop'
-  },
-  {
-    title: 'Mindfulness Coach',
-    company: 'Corporate Wellness Programs',
-    duration: '4 years (2020-2024)',
-    description: 'Delivered stress management and mindfulness training to professionals',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop'
-  }
-];
+
 
 export function ProfilePreview({ formData }) {
   const [activeTab, setActiveTab] = useState('experience');

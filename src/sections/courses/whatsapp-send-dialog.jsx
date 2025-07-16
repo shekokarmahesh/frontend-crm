@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  Button,
-  Stack,
-  Typography,
   Alert,
-  Chip,
   Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   Divider,
+  Stack,
+  TextField,
+  Typography,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 import { Iconify } from 'src/components/iconify';
-import { sendCourseWhatsApp, sendCourseToAllStudents } from 'src/services/api';
+import { sendCourseToAllStudents, sendCourseWhatsApp } from 'src/services/api';
 
 // ----------------------------------------------------------------------
 

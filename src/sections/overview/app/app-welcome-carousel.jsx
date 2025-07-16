@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 
 import { CarouselArrowBasicButtons } from 'src/components/carousel';
 
-import { Iconify } from 'src/components/iconify';
-
 import { AppWelcome } from './app-welcome';
 
 // ----------------------------------------------------------------------

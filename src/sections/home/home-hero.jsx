@@ -4,15 +4,13 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { RouterLink } from 'src/routes/components';
 import { paths } from 'src/routes/paths';
-
-import { CONFIG } from 'src/global-config';
+import { RouterLink } from 'src/routes/components';
 
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
@@ -64,7 +62,7 @@ export function HomeHero({ sx, ...other }) {
             fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' }
           }}
         >
-          No coding required. Just customize our pre-built components — we'll help you create a beautiful, 
+          No coding required. Just customize our pre-built components — we&apos;ll help you create a beautiful, 
           professional dashboard for your business.
         </Typography>
       </m.div>

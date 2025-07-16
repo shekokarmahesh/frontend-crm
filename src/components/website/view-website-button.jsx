@@ -2,19 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-
-import { useRouter } from 'src/routes/hooks';
-import { paths } from 'src/routes/paths';
+import IconButton from '@mui/material/IconButton';
 
 import { Iconify } from 'src/components/iconify';
+import { paths } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------
 
 export function ViewWebsiteButton({ variant = 'contained', size = 'medium', subdomain = null, ...other }) {
-  const router = useRouter();
-
   const handleViewWebsite = () => {
     const websitePath = subdomain ? `/website/${subdomain}` : paths.website;
     // Open in new tab for website preview

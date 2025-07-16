@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
 
 // Icons
-import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
+import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 export function MeditationBanner() {
@@ -19,9 +19,9 @@ export function MeditationBanner() {
         p: 3,
         width: 1,
         position: 'relative',
-        backgroundImage: (theme) =>
-          `linear-gradient(135deg, ${alpha(theme.palette.primary.light, 0.1)}, ${alpha(
-            theme.palette.primary.main,
+        backgroundImage: (themeParam) =>
+          `linear-gradient(135deg, ${alpha(themeParam.palette.primary.light, 0.1)}, ${alpha(
+            themeParam.palette.primary.main,
             0.08
           )})`,
       }}
@@ -35,7 +35,7 @@ export function MeditationBanner() {
               height: 8,
               borderRadius: '50%',
               bgcolor: 'success.main',
-              boxShadow: (theme) => `0 0 8px ${theme.palette.success.main}`,
+              boxShadow: (themeParam) => `0 0 8px ${themeParam.palette.success.main}`,
             }}
           />
           <Typography variant="subtitle2" sx={{ color: 'success.main' }}>

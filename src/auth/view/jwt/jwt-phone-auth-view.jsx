@@ -4,30 +4,24 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
-import { useRouter } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
+import { sendOTP, storeAuthToken, storeOnboardingToken, verifyOTP } from 'src/services/api';
+
 import { Iconify } from 'src/components/iconify';
+
 import { Form, Field } from 'src/components/hook-form';
 
-import { useAuthContext } from '../../hooks';
-import { getErrorMessage } from '../../utils';
 import { FormHead } from '../../components/form-head';
 import { JWT_STORAGE_KEY } from '../../context/jwt/constant';
-import { 
-  sendOTP, 
-  verifyOTP, 
-  storeOnboardingToken, 
-  storeAuthToken 
-} from 'src/services/api';
 
 // ----------------------------------------------------------------------
 
@@ -37,7 +31,7 @@ export const PhoneSchema = zod.object({
     .string()
     .min(1, { message: 'Phone number is required!' })
     .min(10, { message: 'Please enter a valid phone number!' })
-    .regex(/^[\+]?[1-9][\d]{0,15}$/, { message: 'Please enter a valid phone number!' }),
+    .regex(/^[+]?[1-9][\d]{0,15}$/, { message: 'Please enter a valid phone number!' }),
 });
 
 // OTP validation schema
@@ -52,8 +46,6 @@ export const OTPSchema = zod.object({
 // ----------------------------------------------------------------------
 
 export function JwtPhoneAuthView() {
-  const router = useRouter();
-  const { checkUserSession } = useAuthContext();
 
   // State management
   const [step, setStep] = useState('phone'); // 'phone' or 'otp'

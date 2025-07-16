@@ -1,57 +1,35 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'src/routes/hooks';
-import { useAuthContext } from 'src/auth/hooks';
 
+import Alert from '@mui/material/Alert';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Step from '@mui/material/Step';
 import Button from '@mui/material/Button';
-import Stepper from '@mui/material/Stepper';
-import StepLabel from '@mui/material/StepLabel';
-import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import LinearProgress from '@mui/material/LinearProgress';
-import TextField from '@mui/material/TextField';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Chip from '@mui/material/Chip';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
-import Divider from '@mui/material/Divider';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Select from '@mui/material/Select';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
 
-import { Iconify } from 'src/components/iconify';
-
 import { paths } from 'src/routes/paths';
-
-import { ProfilePreview } from './profile-preview';
-import { CelebrationScreen } from './celebration-screen';
-import { UploadImage } from './upload-image';
+import { JWT_STORAGE_KEY } from 'src/auth/context/jwt/constant';
+import { Iconify } from 'src/components/iconify';
+import { debugTokenStatus, getTokenForEndpoint, saveBasicInfo, saveBioAbout, saveExperienceCertifications, saveProfessionalDetails, saveVisualProfile, storeAuthToken } from 'src/services/api';
+import { AiSuggestionButton } from './ai-suggestion-button';
 import { BannerGallery } from './banner-gallery';
 import { EnhancedProgressIndicator } from './enhanced-progress-indicator';
-import { 
-  saveBasicInfo, 
-  saveVisualProfile, 
-  saveProfessionalDetails, 
-  saveBioAbout, 
-  saveExperienceCertifications,
-  storeAuthToken,
-  clearTokens,
-  debugTokenStatus,
-  getTokenForEndpoint
-} from 'src/services/api';
-import { JWT_STORAGE_KEY } from 'src/auth/context/jwt/constant';
-import { AiSuggestionButton } from './ai-suggestion-button';
+import { ProfilePreview } from './profile-preview';
+import { UploadImage } from './upload-image';
 
 // ----------------------------------------------------------------------
 
@@ -167,11 +145,8 @@ const SPECIALIZATIONS = [
 // ----------------------------------------------------------------------
 
 export function OnboardingFlow() {
-  const router = useRouter();
-  const { checkUserSession } = useAuthContext();
   const [activeStep, setActiveStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [showCelebration, setShowCelebration] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [hasCallingData, setHasCallingData] = useState(false);
 
@@ -370,15 +345,7 @@ export function OnboardingFlow() {
         sessionStorage.setItem('demo_user', JSON.stringify(updatedUser));
         
         // Redirect to dashboard
-        try {
-          await checkUserSession();
-          setTimeout(() => {
-            router.push(paths.dashboard.root);
-          }, 200);
-        } catch (error) {
-          console.error('Error refreshing auth state:', error);
-          window.location.href = paths.dashboard.root;
-        }
+        window.location.href = paths.dashboard.root;
         
       } else {
         // Fallback: Complete onboarding locally even if API doesn't return expected response
@@ -406,15 +373,7 @@ export function OnboardingFlow() {
         sessionStorage.setItem('demo_user', JSON.stringify(updatedUser));
         
         // Redirect to dashboard
-        try {
-          await checkUserSession();
-          setTimeout(() => {
-            router.push(paths.dashboard.root);
-          }, 200);
-        } catch (error) {
-          console.error('Error refreshing auth state:', error);
-          window.location.href = paths.dashboard.root;
-        }
+        window.location.href = paths.dashboard.root;
       }
       
     } catch (error) {
@@ -445,42 +404,10 @@ export function OnboardingFlow() {
       sessionStorage.setItem('demo_user', JSON.stringify(updatedUser));
       
       // Redirect to dashboard
-      try {
-        // Refresh authentication state to pick up new token/user data
-        await checkUserSession();
-        
-        // Small delay to ensure auth context is updated
-        setTimeout(() => {
-          // Redirect to dashboard
-          router.push(paths.dashboard.root);
-        }, 200);
-      } catch (error) {
-        console.error('Error refreshing auth state:', error);
-        // Fallback to direct navigation
-        window.location.href = paths.dashboard.root;
-      }
+      window.location.href = paths.dashboard.root;
       
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleCelebrationContinue = async () => {
-    console.log('Welcome to your dashboard!');
-    
-    try {
-      // Refresh authentication state to pick up new token/user data
-      await checkUserSession();
-      
-      // Small delay to ensure auth context is updated
-      setTimeout(() => {
-        // Use router.push for proper navigation with updated auth state
-        router.push(paths.dashboard.root);
-      }, 200);
-    } catch (error) {
-      console.error('Error refreshing auth state:', error);
-      // Fallback to direct navigation
-      window.location.href = paths.dashboard.root;
     }
   };
 

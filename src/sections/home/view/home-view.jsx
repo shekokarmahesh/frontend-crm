@@ -2,9 +2,9 @@ import { CONFIG } from 'src/global-config';
 
 import { HomeHero } from '../home-hero';
 import { HomeFeatures } from '../home-features';
-import { HomePricing } from '../home-pricing';
 import { HomeTestimonials } from '../home-testimonials';
 import { HomeProcess } from '../home-process';
+import { HomePricing } from '../home-pricing';
 
 // ----------------------------------------------------------------------
 

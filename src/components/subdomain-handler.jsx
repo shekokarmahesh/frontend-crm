@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { PublicWebsiteView } from '../sections/public/public-website-view';
 
 // Component that detects subdomain and renders public website if applicable

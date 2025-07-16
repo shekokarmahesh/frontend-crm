@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Chip from '@mui/material/Chip';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import { RouterLink } from 'src/routes/components';
 
@@ -210,7 +210,7 @@ export function HomePricing({ sx, ...other }) {
                       pb: 1,
                     }}
                   >
-                    What's included:
+                    What&apos;s included:
                   </Typography>
                   {plan.features.map((feature, featureIndex) => (
                     <Stack key={featureIndex} direction="row" spacing={1} alignItems="center">
@@ -242,7 +242,7 @@ export function HomePricing({ sx, ...other }) {
     <Box sx={{ textAlign: 'center', mt: 8 }}>
       <m.div variants={varFade('inUp')}>
         <Typography variant="body1" sx={{ color: '#57534e', mb: 2 }}>
-          Have questions? We're here to help.
+          Have questions? We&apos;re here to help.
         </Typography>
         <Button
           variant="text"

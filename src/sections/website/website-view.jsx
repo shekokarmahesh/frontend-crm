@@ -1,37 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import CircularProgress from '@mui/material/CircularProgress';
+import Container from '@mui/material/Container';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import Tab from '@mui/material/Tab';
 import TextField from '@mui/material/TextField';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+
 import LoadingButton from '@mui/lab/LoadingButton';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 
 import { Iconify } from 'src/components/iconify';
+
 import { useAuthContext } from 'src/auth/hooks';
-import { getPublicWebsiteData, checkSubdomainAvailability as checkSubdomainAPI, publishWebsite, getWebsiteStatus } from 'src/services/api';
+
+import { checkSubdomainAvailability as checkSubdomainAPI, getPublicWebsiteData, getWebsiteStatus, publishWebsite } from 'src/services/api';
 
 // ----------------------------------------------------------------------
 
@@ -105,25 +108,25 @@ const tryFetchDemoData = async (token = null) => {
 };
 
 // Individual step fetchers (for debugging or future use)
-const fetchBasicInfo = async (token) => {
-  return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step1-basic-info`, token);
-};
+// const fetchBasicInfo = async (token) => {
+//   return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step1-basic-info`, token);
+// };
 
-const fetchVisualProfile = async (token) => {
-  return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step2-visual-profile`, token);
-};
+// const fetchVisualProfile = async (token) => {
+//   return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step2-visual-profile`, token);
+// };
 
-const fetchProfessionalDetails = async (token) => {
-  return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step3-professional-details`, token);
-};
+// const fetchProfessionalDetails = async (token) => {
+//   return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step3-professional-details`, token);
+// };
 
-const fetchBioAbout = async (token) => {
-  return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step4-bio-about`, token);
-};
+// const fetchBioAbout = async (token) => {
+//   return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step4-bio-about`, token);
+// };
 
-const fetchExperienceCertifications = async (token) => {
-  return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step5-experience-certifications`, token);
-};
+// const fetchExperienceCertifications = async (token) => {
+//   return await fetchWithAuth(`${API_BASE_URL}/facilitator/onboarding/step5-experience-certifications`, token);
+// };
 
 // ----------------------------------------------------------------------
 
@@ -170,12 +173,12 @@ const MOCK_EXPERIENCES = [
 ];
 
 // Utility function to generate URL
-const generateUrl = (firstName, lastName) => {
-  const firstNameStr = firstName?.toLowerCase() || 'yourname';
-  const lastNameStr = lastName?.toLowerCase() || '';
-  const fullName = lastNameStr ? `${firstNameStr}_${lastNameStr}` : firstNameStr;
-  return `${fullName}.ahoum.com`;
-};
+// const generateUrl = (firstName, lastName) => {
+//   const firstNameStr = firstName?.toLowerCase() || 'yourname';
+//   const lastNameStr = lastName?.toLowerCase() || '';
+//   const fullName = lastNameStr ? `${firstNameStr}_${lastNameStr}` : firstNameStr;
+//   return `${fullName}.ahoum.com`;
+// };
 
 // ----------------------------------------------------------------------
 
@@ -213,15 +216,15 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
           setCurrentWebsiteUrl(`https://${data.website.subdomain}.ahoum.com`);
         }
       }
-    } catch (error) {
-      console.error('Error checking website status:', error);
+    } catch (statusError) {
+      console.error('Error checking website status:', statusError);
     }
   };
 
   // Function to check subdomain availability
-  const checkSubdomainAvailability = async (subdomain) => {
+  const checkSubdomainAvailability = async (subdomainParam) => {
     try {
-      const data = await checkSubdomainAPI(subdomain);
+      const data = await checkSubdomainAPI(subdomainParam);
       setSubdomainAvailable(data.available);
       
       if (!data.available) {
@@ -231,8 +234,8 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
       }
       
       return data.available;
-    } catch (error) {
-      console.error('Error checking subdomain:', error);
+    } catch (errorParam) {
+      console.error('Error checking subdomain:', errorParam);
       setSubdomainAvailable(false);
       setPublishError('Failed to check subdomain availability');
       return false;
@@ -298,8 +301,8 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
         // Handle API errors
         setPublishError(data.message || data.error || 'Failed to publish website');
       }
-    } catch (error) {
-      console.error('Error publishing website:', error);
+    } catch (publishError) {
+      console.error('Error publishing website:', publishError);
       setPublishError('Failed to publish website. Please try again.');
     } finally {
       setPublishLoading(false);
@@ -357,8 +360,8 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
             const data = await getPublicWebsiteData(effectiveSubdomain);
             setPractitionerData(data.practitioner);
             setIsLiveData(true);
-          } catch (error) {
-            console.error('Error fetching public website data:', error);
+          } catch (fetchError) {
+            console.error('Error fetching public website data:', fetchError);
             throw new Error('Practitioner not found');
           }
         } else {
@@ -463,8 +466,8 @@ export function WebsiteView({ publicData = null, publicSubdomain = null, isPubli
               setIsLiveData(false); // Mark as demo data from API
               return; // Successfully loaded demo data from API
             }
-          } catch (demoError) {
-            console.error('⚠️ Error fetching demo data from API:', demoError);
+          } catch (demoErrorParam) {
+            console.error('⚠️ Error fetching demo data from API:', demoErrorParam);
           }
           
           // Third attempt: Fallback to session data if available

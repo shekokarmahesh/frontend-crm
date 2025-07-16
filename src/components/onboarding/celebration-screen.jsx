@@ -2,13 +2,12 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
 
 import { Iconify } from 'src/components/iconify';
@@ -107,7 +106,7 @@ export function CelebrationScreen({ onContinue, userProfile }) {
           </Typography>
           
           <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4 }}>
-            Your profile has been successfully created. You're all set to start your journey with us!
+            Your profile has been successfully created. You&apos;re all set to start your journey with us!
           </Typography>
 
           {/* Success Stats */}
@@ -146,7 +145,7 @@ export function CelebrationScreen({ onContinue, userProfile }) {
           {/* Next Steps */}
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-              What's Next?
+              What&apos;s Next?
             </Typography>
             <Stack spacing={1}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>

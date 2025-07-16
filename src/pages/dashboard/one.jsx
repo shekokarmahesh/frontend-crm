@@ -1,19 +1,18 @@
-import { CONFIG } from 'src/global-config';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 
+import { CONFIG } from 'src/global-config';
 import { SeoIllustration } from 'src/assets/illustrations';
 import { _appFeatured, _appInvoices, _analyticsTasks } from 'src/_mock/_overview';
 import { useMockedUser } from 'src/auth/hooks';
-import { AppWelcome } from 'src/sections/overview/app/app-welcome';
 import { AppWelcomeCarousel } from 'src/sections/overview/app/app-welcome-carousel';
 import { AppFeatured } from 'src/sections/overview/app/app-featured';
 import { MeditationBanner } from 'src/sections/overview/app/meditation-banner';
 import { AppNewInvoices } from 'src/sections/overview/app/app-new-invoices';
-import { AnalyticsTasks } from 'src/sections/overview/analytics/analytics-tasks';
 import { AppWidgetSummary } from 'src/sections/overview/app/app-widget-summary';
+import { AnalyticsTasks } from 'src/sections/overview/analytics/analytics-tasks';
 import { EcommerceSaleByGender } from 'src/sections/overview/e-commerce/ecommerce-sale-by-gender';
 import { EcommerceYearlySales } from 'src/sections/overview/e-commerce/ecommerce-yearly-sales';
 

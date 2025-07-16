@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
+
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+
 import { Iconify } from 'src/components/iconify';
 
 export default function ViewToggle({ view, onChange }) {

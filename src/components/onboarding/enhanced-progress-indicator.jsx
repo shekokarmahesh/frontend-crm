@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Step from '@mui/material/Step';
-import Stepper from '@mui/material/Stepper';
-import StepLabel from '@mui/material/StepLabel';
-import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import LinearProgress from '@mui/material/LinearProgress';
-import Alert from '@mui/material/Alert';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import Typography from '@mui/material/Typography';
 
 import { Iconify } from 'src/components/iconify';
 

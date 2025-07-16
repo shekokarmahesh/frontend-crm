@@ -2,11 +2,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-import { RouterLink } from 'src/routes/components';
 import { paths } from 'src/routes/paths';
-
+import { RouterLink } from 'src/routes/components';
 import { CONFIG } from 'src/global-config';
-
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------

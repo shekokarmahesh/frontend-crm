@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-  Box,
-  Typography,
   Alert,
-  CircularProgress,
+  Box,
+  Button,
   Card,
   CardContent,
   Chip,
-  Stack,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   IconButton,
-  Tooltip
+  Stack,
+  TextField,
+  Tooltip,
+  Typography
 } from '@mui/material';
+
 import { Iconify } from 'src/components/iconify';
 import { initiateCourseCalls } from 'src/services/api';
 
@@ -209,7 +211,7 @@ export default function CourseCallDialog({ open, onClose, course, onCallInitiate
                   • Agent: <strong>Omee from Ahoum</strong>
                 </Typography>
                 <Typography variant="body2">
-                  • Purpose: <strong>Promote "{course?.title}" course</strong>
+                  • Purpose: <strong>Promote &quot;{course?.title}&quot; course</strong>
                 </Typography>
                 <Typography variant="body2">
                   • Phone: <strong>{phoneNumber}</strong>
@@ -291,4 +293,4 @@ export default function CourseCallDialog({ open, onClose, course, onCallInitiate
       </DialogActions>
     </Dialog>
   );
-} 
+}
