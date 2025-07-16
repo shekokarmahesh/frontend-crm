@@ -32,15 +32,15 @@ export function HomeHero({ sx, ...other }) {
           sx={[
             (theme) => ({
               fontSize: {
-                xs: '2rem',
-                sm: '2.5rem',
-                md: '3rem',
-                lg: '4rem'
+                xs: '1.5rem', // 25% smaller
+                sm: '1.9rem',
+                md: '2.25rem',
+                lg: '3rem'
               },
               fontWeight: 'bold',
               lineHeight: { xs: 1.3, md: 1.2 },
               color: '#1c1917',
-              maxWidth: { xs: '100%', md: 680 },
+              maxWidth: { xs: '100%', md: 520 }, // reduce maxWidth
             }),
           ]}
         >
@@ -58,8 +58,8 @@ export function HomeHero({ sx, ...other }) {
           sx={{
             color: '#57534e',
             lineHeight: 1.6,
-            maxWidth: { xs: '100%', md: 512 },
-            fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' }
+            maxWidth: { xs: '100%', md: 400 }, // reduce maxWidth
+            fontSize: { xs: '0.75rem', sm: '0.9rem', md: '1rem' } // 25% smaller
           }}
         >
           No coding required. Just customize our pre-built components — we&apos;ll help you create a beautiful, 
@@ -71,7 +71,7 @@ export function HomeHero({ sx, ...other }) {
         <Stack 
           spacing={{ xs: 1.5, sm: 2 }} 
           direction={{ xs: 'column', sm: 'row' }} 
-          sx={{ maxWidth: { xs: '100%', md: 448 } }}
+          sx={{ maxWidth: { xs: '100%', md: 340 } }} // reduce maxWidth
         >
           <Button
             component={RouterLink}
@@ -79,12 +79,12 @@ export function HomeHero({ sx, ...other }) {
             size="large"
             fullWidth={!mdUp}
             variant="contained"
-            startIcon={<Iconify icon="solar:rocket-bold" width={24} />}
+            startIcon={<Iconify icon="solar:rocket-bold" width={20} />} // slightly smaller icon
             sx={{
-              fontSize: { xs: '1rem', md: '1.125rem' },
-              py: { xs: 1.5, md: 2 },
-              px: { xs: 3, md: 4 },
-              height: { xs: 48, md: 56 },
+              fontSize: { xs: '0.85rem', md: '1rem' }, // smaller font
+              py: { xs: 1.2, md: 1.5 },
+              px: { xs: 2, md: 3 },
+              height: { xs: 40, md: 44 },
               bgcolor: '#d97706',
               borderRadius: '12px',
               textTransform: 'none',
@@ -105,14 +105,14 @@ export function HomeHero({ sx, ...other }) {
             size="large"
             fullWidth={!mdUp}
             variant="outlined"
-            startIcon={<Iconify icon="solar:play-circle-outline" width={24} />}
+            startIcon={<Iconify icon="solar:play-circle-outline" width={20} />} // slightly smaller icon
             sx={{
-              height: { xs: 48, md: 56 },
+              height: { xs: 40, md: 44 },
               borderRadius: '12px',
               textTransform: 'none',
               borderColor: '#d4d4d8',
               color: '#57534e',
-              fontSize: { xs: '1rem', md: '1.125rem' },
+              fontSize: { xs: '0.85rem', md: '1rem' }, // smaller font
               '&:hover': {
                 borderColor: '#d97706',
                 color: '#d97706',
@@ -126,12 +126,12 @@ export function HomeHero({ sx, ...other }) {
 
       <m.div {...motionProps}>
         <Stack direction="row" spacing={1} alignItems="center" sx={{ flexWrap: 'wrap' }}>
-          <Iconify icon="solar:check-circle-bold" width={{ xs: 16, md: 20 }} sx={{ color: '#d97706' }} />
+          <Iconify icon="solar:check-circle-bold" width={{ xs: 14, md: 16 }} sx={{ color: '#d97706' }} />
           <Typography 
             variant="body1" 
             sx={{ 
               color: '#57534e',
-              fontSize: { xs: '0.875rem', md: '1rem' },
+              fontSize: { xs: '0.7rem', md: '0.85rem' }, // smaller font
               lineHeight: 1.5
             }}
           >
@@ -145,10 +145,16 @@ export function HomeHero({ sx, ...other }) {
   const renderMockup = () => (
     <Stack 
       direction={{ xs: 'column', md: 'row' }} 
-      spacing={{ xs: 3, md: 4 }} 
-      alignItems="center" 
+      spacing={{ xs: 2, md: 2, lg: 3 }} // tighter spacing
+      alignItems="center"
       justifyContent="center"
-      sx={{ mt: { xs: 4, md: 0 } }}
+      sx={{
+        mt: { xs: 4, md: 0 },
+        width: '100%',
+        minHeight: { md: 360, lg: 420 },
+        maxWidth: { xs: '100%', md: 600, lg: 700 }, // wider for md/lg
+        mx: 'auto',
+      }}
     >
       {/* Desktop Mockup */}
       <Box
@@ -157,15 +163,17 @@ export function HomeHero({ sx, ...other }) {
           transform: { xs: 'none', md: 'rotate(-2deg)' },
           '&:hover': { transform: { xs: 'scale(1.02)', md: 'rotate(0deg) scale(1.05)' } },
           transition: 'transform 0.3s ease',
-          width: { xs: '100%', sm: '80%', md: 'auto' }
+          width: { xs: '100%', sm: '90%', md: 380, lg: 480 }, // larger for md/lg
+          minWidth: 0,
+          maxWidth: { xs: '100%', md: 480, lg: 540 },
         }}
       >
         <Box
           sx={{
-            width: { xs: '100%', md: 400, lg: 500 },
+            width: { xs: '100%', md: 360, lg: 440 }, // larger for md/lg
             bgcolor: '#1f2937',
             borderRadius: '12px',
-            p: 1.5,
+            p: { xs: 1.2, md: 2 },
             boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
           }}
         >
@@ -199,7 +207,11 @@ export function HomeHero({ sx, ...other }) {
 
           {/* Website Content Preview */}
           <Box sx={{ bgcolor: 'white', borderRadius: '8px', overflow: 'hidden' }}>
-            <Box sx={{ height: { xs: 200, md: 300 }, overflowY: 'auto' }}>
+            <Box sx={{ height: { xs: 200, md: 300 }, overflowY: 'auto',
+              // Hide scrollbar for all browsers
+              scrollbarWidth: 'none', // Firefox
+              '&::-webkit-scrollbar': { display: 'none' }, // Webkit
+            }}>
               {/* Hero banner */}
               <Box sx={{ position: 'relative', height: 80 }}>
                 <Box
@@ -318,12 +330,14 @@ export function HomeHero({ sx, ...other }) {
           '&:hover': { transform: { xs: 'scale(1.02)', md: 'rotate(0deg) scale(1.05)' } },
           transition: 'transform 0.3s ease',
           display: { xs: 'none', sm: 'block' },
-          width: { xs: '60%', md: 'auto' }
+          width: { xs: '60%', md: 160, lg: 200 }, // larger for md/lg
+          minWidth: 0,
+          maxWidth: { xs: '60%', md: 200 },
         }}
       >
         <Box
           sx={{
-            width: 160,
+            width: { xs: 120, md: 140, lg: 180 }, // larger for md/lg
             bgcolor: '#111827',
             borderRadius: '16px',
             p: 1,
@@ -354,7 +368,10 @@ export function HomeHero({ sx, ...other }) {
             </Box>
 
             {/* Mobile Website Preview */}
-            <Box sx={(theme) => ({ bgcolor: theme.palette.common.white, height: 200, overflowY: 'auto' })}>
+            <Box sx={(theme) => ({ bgcolor: theme.palette.common.white, height: 200, overflowY: 'auto',
+              scrollbarWidth: 'none', // Firefox
+              '&::-webkit-scrollbar': { display: 'none' }, // Webkit
+            })}>
                {/* App header */}
                <Box sx={(theme)=>({
                  bgcolor: theme.palette.grey[100],
@@ -439,28 +456,28 @@ export function HomeHero({ sx, ...other }) {
         {
           overflow: 'hidden',
           position: 'relative',
-          py: { xs: 4, sm: 6, md: 8, lg: 12 },
-          px: { xs: 2, sm: 3, md: 4 },
+          py: { xs: 3, sm: 4, md: 6, lg: 8 }, // less vertical padding
+          px: { xs: 1, sm: 2, md: 3 }, // less horizontal padding
           background: 'linear-gradient(to bottom right, #fafaf9, rgba(217, 119, 6, 0.05))',
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
-      <Container component={MotionContainer} maxWidth="xl">
+      <Container component={MotionContainer} maxWidth="xl" sx={{ px: { xs: 0, md: 2 } }}>
         <Grid 
           container 
-          spacing={{ xs: 4, md: 8 }} 
+          spacing={{ xs: 2, md: 4 }} // less spacing
           alignItems="center" 
           sx={{ 
-            minHeight: { xs: 'auto', md: '600px' },
-            flexDirection: { xs: 'column-reverse', lg: 'row' }
+            minHeight: { xs: 'auto', md: '480px' }, // less minHeight
+            flexDirection: { xs: 'column-reverse', lg: 'row' },
           }}
         >
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} sx={{ px: { xs: 0, md: 2 } }}>
             {renderContent()}
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} sx={{ px: { xs: 0, md: 2 }, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {renderMockup()}
           </Grid>
         </Grid>
